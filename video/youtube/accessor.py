@@ -25,9 +25,9 @@ def take_video_ids(next_page_token=None):
     response_dict = json.loads(response.content)
     logger.debug(json.dumps(response_dict, indent=4, ensure_ascii=False))
 
-    next_page_token = response_dict['nextPageToken']
+    next_page_token = response_dict['nextPageToken'] if 'nextPageToken' in response_dict else None
     ids = [element['id']['videoId'] for element in response_dict['items']]
-    logger.info('search result nextPageToken: ' + next_page_token + ', ' + 'youtube ids: ' + str(ids))
+    logger.info('search result nextPageToken: ' + str(next_page_token) + ', ' + 'youtube ids: ' + str(ids))
     return next_page_token, ids
 
 
@@ -56,7 +56,7 @@ def take_comment_of_poster(video_id):
     response = requests.get(const.END_POINT + COMMENT_PATH, query)
     response_dict = json.loads(response.content)
     logger.debug(json.dumps(response_dict, indent=4, ensure_ascii=False))
-    if len(response_dict['items']) is 0:
+    if 'items' not in response_dict or len(response_dict['items']) is 0:
         return None
 
     first_comment = response_dict['items'][0]['snippet']['topLevelComment']['snippet']

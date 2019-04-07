@@ -14,7 +14,7 @@ def count_tag_appearance(video_info):
         if tag in video_info.youtube_description:
             frequency[tag] += 1
     if logger.isEnabledFor(logging.INFO):
-        logger.info('title: ' + video_info.title)
+        logger.debug('title: ' + video_info.title)
         for k, v in sorted(frequency.items(), key=lambda items: items[1], reverse=True):
             logger.info('tags: ' + k + ' ' + str(v))
 
