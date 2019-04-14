@@ -6,7 +6,6 @@ from video.youtube import accessor as youtube
 from video.niconico import accessor as niconico
 from video.niconico import const as niconico_const
 
-SEARCH_TARGET_TITLE_SUBSTRINGS = ['山田玲司のヤングサンデー', '中2ナイトニッポン', 'れいとしょう']
 YouTubeVideoInfo = namedtuple('YouTubeVideoInfo', ('title', 'description', 'tags', 'comment_of_poster', 'published_at'))
 NiconicoVideoInfo = namedtuple('NiconicoVideoInfo', ('description', 'tags'))
 VideoInfo = namedtuple('VideoInfo', ('title', 'youtube_description', 'youtube_tags',
@@ -18,8 +17,6 @@ def take_video_info(youtube_id):
     youtube_info = youtube.take_video_info(youtube_id)
     youtube_info = filter_youtube_info(youtube_id, youtube_info)
     if not youtube_info:
-        return
-    if not is_target_video(youtube_info):
         return
     niconico_id = take_niconico_video_id(youtube_info)
     if not niconico_id:
@@ -42,13 +39,6 @@ def filter_youtube_info(video_id, video_info):
     logger.debug('publishedAt: ' + published_at)
     logger.debug('comment_of_poster: ' + str(comment_of_poster).replace(os.linesep, ' '))
     return YouTubeVideoInfo(title, description, tags, comment_of_poster, published_at)
-
-
-def is_target_video(video_info):
-    for substring in SEARCH_TARGET_TITLE_SUBSTRINGS:
-        if substring in video_info.title:
-            return True
-    logger.info('This video is not target. title: ' + video_info.title)
 
 
 def take_niconico_video_id(info):

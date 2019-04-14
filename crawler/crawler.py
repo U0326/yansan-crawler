@@ -2,7 +2,6 @@ import logging
 
 from video import videoinfo
 from video.youtube import accessor as youtube
-from tag import tag
 from video.db import video_repository
 
 logger = logging.getLogger(__name__)
@@ -25,11 +24,15 @@ def save_video_info(ids):
         video_info = videoinfo.take_video_info(video_id)
         if not video_info:
             continue
-        tag_frequency = tag.count_tag_appearance(video_info)
-        record = {'title': video_info.title, 'id': video_id,
-                  'published_at': video_info.published_at, 'tags': tag_frequency}
-        video_repository.insert_video_info(record)
-        for tag_value in tag_frequency.keys():
+        tags = list(set(video_info.youtube_tags).union(video_info.niconico_tags))
+        record = {
+            'title': video_info.title,
+            'id': video_id,
+            'published_at': video_info.published_at,
+            'tags': tags
+        }
+        video_repository.save_video_info(record)
+        for tag_value in tags:
             video_repository.push_id_per_tag(tag_value, video_id)
 
 
