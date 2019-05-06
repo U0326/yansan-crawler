@@ -1,0 +1,1 @@
+0 2 * * * cd /opt/yansan-crawler; python -m crawler.crawler -p
