@@ -1,0 +1,182 @@
+_comment_response_01 = '{ \
+    "kind":"youtube#commentThreadListResponse", \
+    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/PakwPd3xqoGWoHQdy1LRNn7-ZJ8\\\"", \
+    "nextPageToken":"QURTSl9pMXZLMy1pbzJjU2dxeDNCQkRYNC1LSmZkVm1yN29qWGk2VjM2b1l1bkloSnJ1OXVTNEtfc0Jid0pEMUZseDl6RUk1ZjNwenFmeVl0WWdSRnFjd08tcUNUaWNRNzdDb0U4V2lJZVhETHFXVjEwbUNTN0VHMlVLdWtwRXU=", \
+    "pageInfo":{ \
+        "totalResults":1, \
+        "resultsPerPage":1 \
+    }, \
+    "items":[ \
+        { \
+            "kind":"youtube#commentThread", \
+            "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/ftk8l1de7rJ9ZeTNrkvy8finGno\\\"", \
+            "id":"UgzsV7bEtLqTlmARUYN4AaABAg", \
+            "snippet":{ \
+                "videoId":"7WJJ_sm2VzM", \
+                "topLevelComment":{ \
+                    "kind":"youtube#comment", \
+                    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/E8XZR-V_CuEQOtIGJeaZZa6kkcI\\\"", \
+                    "id":"UgzsV7bEtLqTlmARUYN4AaABAg", \
+                    "snippet":{ \
+                        "authorDisplayName":"hiro449944", \
+                        "authorProfileImageUrl":"https://yt3.ggpht.com/a/AATXAJwZdC5871qKQJkCHCKrQj2vSN7HIGPrHVmFUA=s48-c-k-c0xffffffff-no-rj-mo", \
+                        "authorChannelUrl":"http://www.youtube.com/channel/UCrnYfIhCUcHwa_R7lEci_yQ", \
+                        "authorChannelId":{ \
+                            "value":"UCrnYfIhCUcHwa_R7lEci_yQ" \
+                        }, \
+                        "videoId":"7WJJ_sm2VzM", \
+                        "textDisplay":"31巻は、新年の4号連続大増ページの弊害で、水島が苦肉の策としてページ稼ぎのために過去編を描かずにいられなかった。", \
+                        "textOriginal":"31巻は、新年の4号連続大増ページの弊害で、水島が苦肉の策としてページ稼ぎのために過去編を描かずにいられなかった。", \
+                        "canRate":true, \
+                        "viewerRating":"none", \
+                        "likeCount":0, \
+                        "publishedAt":"2020-03-05T11:52:44.000Z", \
+                        "updatedAt":"2020-03-05T11:52:44.000Z" \
+                    } \
+                }, \
+                "canReply":true, \
+                "totalReplyCount":0, \
+                "isPublic":true \
+            } \
+        } \
+    ] \
+} \
+'
+
+_comment_response_02 = '{ \
+    "kind":"youtube#commentThreadListResponse", \
+    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/w53fvYYDlJw5amvmEl25BY_bNhM\\\"", \
+    "nextPageToken":"QURTSl9pMjQtaXRXbUotZ09tQzhIZWlXOVlSbThtTm4zTjZWNUZpOF9HYXcxVTBsaDY5ZW9fcUFIUW5XVFZiNDN6TVVTUnBGaU5XeVg3TWNpLVJuNml4QTdGSXhPYzdDTlg2VWV5WUlIcmR0MGdQaGNfa1duSUVwUkEtaFJ1UmM=", \
+    "pageInfo":{ \
+        "totalResults":1, \
+        "resultsPerPage":1 \
+    }, \
+    "items":[ \
+        { \
+            "kind":"youtube#commentThread", \
+            "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/mLhk7dNTj1H6C6zuuZqd-j4yRGE\\\"", \
+            "id":"UgzmtGh1MfhdycdCDY94AaABAg", \
+            "snippet":{ \
+                "videoId":"Msg_ArgHetM", \
+                "topLevelComment":{ \
+                    "kind":"youtube#comment", \
+                    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/PHA1V0m0SeE-RfSUcCXudLgpnns\\\"", \
+                    "id":"UgzmtGh1MfhdycdCDY94AaABAg", \
+                    "snippet":{ \
+                        "authorDisplayName":"fujiu", \
+                        "authorProfileImageUrl":"https://yt3.ggpht.com/a/AATXAJzuN26RwSS1Hicx1RnRKTep_CFyPUap8jFimw=s48-c-k-c0xffffffff-no-rj-mo", \
+                        "authorChannelUrl":"http://www.youtube.com/channel/UCfDlFZhNnbPJw64kUPdw_-w", \
+                        "authorChannelId":{ \
+                            "value":"UCfDlFZhNnbPJw64kUPdw_-w" \
+                        }, \
+                        "videoId":"Msg_ArgHetM", \
+                        "textDisplay":"公式さん、後半動画へのリンクが切れてるみたいですよー。", \
+                        "textOriginal":"公式さん、後半動画へのリンクが切れてるみたいですよー。", \
+                        "canRate":true, \
+                        "viewerRating":"none", \
+                        "likeCount":1, \
+                        "publishedAt":"2020-02-20T08:29:41.000Z", \
+                        "updatedAt":"2020-02-20T08:29:41.000Z" \
+                    } \
+                }, \
+                "canReply":true, \
+                "totalReplyCount":0, \
+                "isPublic":true \
+            } \
+        } \
+    ] \
+} \
+'
+
+_comment_response_03 = '{ \
+    "kind":"youtube#commentThreadListResponse", \
+    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/c55Hb-GG7OCheRQz0D0EhTcrvBc\\\"", \
+    "nextPageToken":"QURTSl9pMXE4SzFtaTBGYUdQN1kzRGl5Z2EtTk5SV3lMeFN4TS1ZZ0dvNHoyLTlGUHhWQXNRNERPWVE3ZTJVNk1EUThYcUFRSnl0WWhza3dFS0JhYzNEQWR6OEJMT3d2T0RhSVFKbmtnVUJDMXBER2NHNmhtUTRCTnlYM2pYRV92ems=", \
+    "pageInfo":{ \
+        "totalResults":1, \
+        "resultsPerPage":1 \
+    }, \
+    "items":[ \
+        { \
+            "kind":"youtube#commentThread", \
+            "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/bIxrj9eKPJjWU_pM-W6TJ3sx5ko\\\"", \
+            "id":"UgzpieTeG6V3UTkxGr14AaABAg", \
+            "snippet":{ \
+                "videoId":"xf4eOMNH8-M", \
+                "topLevelComment":{ \
+                    "kind":"youtube#comment", \
+                    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/AvB_c87WeARtIt0p-3C4STc2pMU\\\"", \
+                    "id":"UgzpieTeG6V3UTkxGr14AaABAg", \
+                    "snippet":{ \
+                        "authorDisplayName":"maxammasakazu", \
+                        "authorProfileImageUrl":"https://yt3.ggpht.com/a/AATXAJwZicj9fgv2cA1vgKDQJABYMxc_EDTO5cxpfw=s48-c-k-c0xffffffff-no-rj-mo", \
+                        "authorChannelUrl":"http://www.youtube.com/channel/UCXy8zSpmxiyGB7j1OBkKdvQ", \
+                        "authorChannelId":{ \
+                            "value":"UCXy8zSpmxiyGB7j1OBkKdvQ" \
+                        }, \
+                        "videoId":"xf4eOMNH8-M", \
+                        "textDisplay":"ようやく理解出来たのはスタウォーズの事です。\\n\\n\\n前回のスターウォーズ解説で「ＪＪありがとう。」と言うくだりがありました。\\nそれに合わせて「キャサリーンの悩み」も合わせて解説されていました。\\nこれは何か？とずっと考えていたのですが、「客同士で殴り合って、結論出してくれ。」を今回の寅さんと重ね合わせてようやく答えが出ました。\\n\\n\\n「毎回寅さんは同じ様なプロットでストーリーが展開する。これを楽しむ文化は日本にはあった。スターウォーズファンもこれ位の事を求めていた感じはあるが本当のスターウォーズファンがそれで納得行くのか？それとも革新的な事を求めている事が本当のスターウォーズファンの態度なのか？」と言う視点でしょう。\\n\\n\\nそこで、自分が見て来た山田玲司先生の視点とその答えを推理すると、「作家のあるがままの努力をエンターテインメントの形で楽しむ事をお勧めします。」と集約できるのでは無いでしょうか？\\n\\n\\n\\n日本の国民的映画寅さんの存在としてのスターウォーズは成立しにくい。しかし、寅さん的プロットの中に「作家の生みの苦しみ」を見る事が出来ればそれは素晴らしいエンターテインメントの筈です。\\n\\n\\n今回の読み解きには苦労しました。ずっと考えながら見ていました。毎週解説と思い込んでいた怠慢な自分も居ます。\\nこれからも気合を入れて見て行きます。皆様に於かれましては頑張って下さい。", \
+                        "textOriginal":"ようやく理解出来たのはスタウォーズの事です。\\n\\n\\n前回のスターウォーズ解説で「ＪＪありがとう。」と言うくだりがありました。\\nそれに合わせて「キャサリーンの悩み」も合わせて解説されていました。\\nこれは何か？とずっと考えていたのですが、「客同士で殴り合って、結論出してくれ。」を今回の寅さんと重ね合わせてようやく答えが出ました。\\n\\n\\n「毎回寅さんは同じ様なプロットでストーリーが展開する。これを楽しむ文化は日本にはあった。スターウォーズファンもこれ位の事を求めていた感じはあるが本当のスターウォーズファンがそれで納得行くのか？それとも革新的な事を求めている事が本当のスターウォーズファンの態度なのか？」と言う視点でしょう。\\n\\n\\nそこで、自分が見て来た山田玲司先生の視点とその答えを推理すると、「作家のあるがままの努力をエンターテインメントの形で楽しむ事をお勧めします。」と集約できるのでは無いでしょうか？\\n\\n\\n\\n日本の国民的映画寅さんの存在としてのスターウォーズは成立しにくい。しかし、寅さん的プロットの中に「作家の生みの苦しみ」を見る事が出来ればそれは素晴らしいエンターテインメントの筈です。\\n\\n\\n今回の読み解きには苦労しました。ずっと考えながら見ていました。毎週解説と思い込んでいた怠慢な自分も居ます。\\nこれからも気合を入れて見て行きます。皆様に於かれましては頑張って下さい。", \
+                        "canRate":true, \
+                        "viewerRating":"none", \
+                        "likeCount":0, \
+                        "publishedAt":"2020-02-14T09:21:40.000Z", \
+                        "updatedAt":"2020-02-14T09:21:40.000Z" \
+                    } \
+                }, \
+                "canReply":true, \
+                "totalReplyCount":0, \
+                "isPublic":true \
+            } \
+        } \
+    ] \
+} \
+'
+
+_comment_response_04 = '{ \
+    "kind":"youtube#commentThreadListResponse", \
+    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/z0qCZ3W7xhEqq1Br2wGbUzGWwes\\\"", \
+    "nextPageToken":"QURTSl9pMUNHeVJ0S3RpekkyeVlWZGFza1F6dGNZUmtjRGd0RjRQbUpmeW1IUTdCa2RQNjRHdmVfN3kwQzJ5bDRWeUtsYlZhV3dsd2RBdE1mbWx0NG5BWGR6cHJQWG9sTF9DWk9aLWhuVV9ZclNQYjhvbDhTTzUzVnp5SldwTnU5ODQ=", \
+    "pageInfo":{ \
+        "totalResults":1, \
+        "resultsPerPage":1 \
+    }, \
+    "items":[ \
+        { \
+            "kind":"youtube#commentThread", \
+            "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/9f4x54LvIfJJtc8dgcqPh0KyWVg\\\"", \
+            "id":"Ugw_9GZDXiQlirrqhBR4AaABAg", \
+            "snippet":{ \
+                "videoId":"zOpE2bfaQRA", \
+                "topLevelComment":{ \
+                    "kind":"youtube#comment", \
+                    "etag":"\\\"SJZWTG6xR0eGuCOh2bX6w3s4F94/o3m3X_AcSlTo0z3ANQUqe-TLGbU\\\"", \
+                    "id":"Ugw_9GZDXiQlirrqhBR4AaABAg", \
+                    "snippet":{ \
+                        "authorDisplayName":"go say", \
+                        "authorProfileImageUrl":"https://yt3.ggpht.com/a/AATXAJy2FImEvVTNokaWL9WKdZtpGJ6__43dijpH1Q=s48-c-k-c0xffffffff-no-rj-mo", \
+                        "authorChannelUrl":"http://www.youtube.com/channel/UC-KcQGCIDrvrXYXD0AHAZCQ", \
+                        "authorChannelId":{ \
+                            "value":"UC-KcQGCIDrvrXYXD0AHAZCQ" \
+                        }, \
+                        "videoId":"zOpE2bfaQRA", \
+                        "textDisplay":"三日かよｗｗｗｗ", \
+                        "textOriginal":"三日かよｗｗｗｗ", \
+                        "canRate":true, \
+                        "viewerRating":"none", \
+                        "likeCount":0, \
+                        "publishedAt":"2020-02-17T08:40:16.000Z", \
+                        "updatedAt":"2020-02-17T08:40:16.000Z" \
+                    } \
+                }, \
+                "canReply":true, \
+                "totalReplyCount":0, \
+                "isPublic":true \
+            } \
+        } \
+    ] \
+} \
+'
+
+id_comment_response_dict = {'7WJJ_sm2VzM': _comment_response_01, 'Msg_ArgHetM': _comment_response_02,
+                          'xf4eOMNH8-M': _comment_response_03, 'zOpE2bfaQRA': _comment_response_04}
