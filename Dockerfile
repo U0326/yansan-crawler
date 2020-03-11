@@ -6,7 +6,7 @@ ENV TZ JST-9
 
 ENV YOUTUBE_API_KEY change_it
 COPY ./ /opt/yansan-crawler/
-COPY ./crontab /var/spool/cron/crontabs/root
+COPY ./assets/crontab /var/spool/cron/crontabs/root
 WORKDIR /opt/yansan-crawler
 RUN pip install --upgrade pip
 RUN pip install -r ./require.txt
