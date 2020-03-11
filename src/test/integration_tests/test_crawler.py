@@ -22,7 +22,7 @@ class TestCrawler(TestCase):
         self._valid_db()
 
     @mock.patch('requests.get', side_effect=get_side_effect)
-    @mock.patch('src.main.crawler.video_info.videoinfo.take_video_info')
+    @mock.patch('src.main.crawler.video_info.video_info_accessor.take_video_info')
     def test_crawl_02_existing_id(self, mock_take_video_info, _):
         video_info.crawl_video_info()
         assert not mock_take_video_info.called

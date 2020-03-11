@@ -1,6 +1,6 @@
 import logging
 
-from src.main.video import videoinfo
+from src.main.video.common import video_info_accessor
 from src.main.video.youtube import accessor as youtube
 from src.main.db import video_repository
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
@@ -16,7 +16,7 @@ def crawl_video_info():
         for _id in ids:
             if video_repository.exists_video_id(_id):
                 continue
-            youtube_info, niconico_info = videoinfo.take_video_info(_id)
+            youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
             _save_video_info(youtube_info, niconico_info)
         video_repository.save_next_page_token(next_page_token)
         if not next_page_token:
