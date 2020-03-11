@@ -64,13 +64,3 @@ def take_comment_of_poster(video_id):
     return first_comment['textDisplay'] \
         if first_comment['authorChannelId']['value'] == const.YANSAN_CHANNEL_ID \
         else None
-
-
-# TODO 要削除
-# if __name__ == '__main__':
-#     log_format = '%(asctime)s %(levelname)s %(name)s :%(message)s'
-#     logging.basicConfig(level=logging.DEBUG, format=log_format)
-#     nextPageToken, video_ids = take_video_ids()
-#     video_info = take_video_info(video_ids[1])
-#     video_comment = take_comment_of_poster(video_ids[1])
-#     print(video_comment)

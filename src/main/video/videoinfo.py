@@ -2,11 +2,10 @@ from collections import namedtuple
 import os
 import logging
 import re
-from src.main.video.youtube import accessor as youtube
+from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
 from src.main.video.niconico import accessor as niconico
 from src.main.video.niconico import const as niconico_const
 
-YouTubeVideoInfo = namedtuple('YouTubeVideoInfo', ('title', 'description', 'tags', 'comment_of_poster', 'published_at'))
 NiconicoVideoInfo = namedtuple('NiconicoVideoInfo', ('description', 'tags'))
 VideoInfo = namedtuple('VideoInfo', ('title', 'youtube_description', 'youtube_tags',
                                      'niconico_description', 'niconico_tags', 'published_at'))
@@ -14,8 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 def take_video_info(youtube_id):
-    youtube_info = youtube.take_video_info(youtube_id)
-    youtube_info = filter_youtube_info(youtube_id, youtube_info)
+    youtube_info = YoutubeVideoInfo(youtube_id)
     if not youtube_info:
         return
     niconico_id = take_niconico_video_id(youtube_info)
@@ -27,24 +25,8 @@ def take_video_info(youtube_id):
                      niconico_info.description, niconico_info.tags, youtube_info.published_at)
 
 
-def filter_youtube_info(video_id, video_info):
-    title = video_info['title']
-    description = video_info['description']
-    tags = video_info['tags']
-    published_at = video_info['publishedAt']
-    comment_of_poster = youtube.take_comment_of_poster(video_id)
-    logger.debug('title: ' + title)
-    logger.debug('youtube description: ' + description.replace(os.linesep, ' '))
-    logger.debug('youtube tags: ' + str(tags))
-    logger.debug('publishedAt: ' + published_at)
-    logger.debug('comment_of_poster: ' + str(comment_of_poster).replace(os.linesep, ' '))
-    return YouTubeVideoInfo(title, description, tags, comment_of_poster, published_at)
-
-
 def take_niconico_video_id(info):
-    for text in info:
-        if not hasattr(text, 'replace'):
-            continue
+    for text in [info.description, info.comment_of_poster]:
         matched = re.match(
             '.*' + re.escape(niconico_const.VIDEO_RESOURCE_PREFIX) + '([a-z0-9]+).*',
             text.replace(os.linesep, ' '))
