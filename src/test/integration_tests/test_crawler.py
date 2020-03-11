@@ -1,7 +1,7 @@
 import logging
 from unittest import TestCase
 from unittest import mock
-from crawler import crawler
+from src.main.crawler import crawler
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
 from src.main.video.db.video_repository import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
@@ -22,7 +22,7 @@ class TestCrawler(TestCase):
         self._valid_db()
 
     @mock.patch('requests.get', side_effect=get_side_effect)
-    @mock.patch('crawler.crawler.videoinfo.take_video_info')
+    @mock.patch('src.main.crawler.crawler.videoinfo.take_video_info')
     def test_crawl_02_existing_id(self, mock_take_video_info, *args):
         crawler.crawl()
         assert not mock_take_video_info.called
