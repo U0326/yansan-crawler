@@ -1,29 +1,27 @@
-from collections import namedtuple
 import os
 import logging
 import re
+from typing import Tuple
+
 from src.main.video.niconico import const as niconico_const
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
 from src.main.video.niconico.niconico_video_info import NicoNicoVideoInfo
 
-VideoInfo = namedtuple('VideoInfo', ('title', 'youtube_description', 'youtube_tags',
-                                     'niconico_description', 'niconico_tags', 'published_at'))
 logger = logging.getLogger(__name__)
 
 
-def take_video_info(youtube_id):
+def take_video_info(youtube_id) -> Tuple[YoutubeVideoInfo, NicoNicoVideoInfo]:
     youtube_info = YoutubeVideoInfo(youtube_id)
     if not youtube_info:
         return
-    niconico_id = take_niconico_video_id(youtube_info)
+    niconico_id = _take_niconico_video_id(youtube_info)
     if not niconico_id:
         return
     niconico_info = NicoNicoVideoInfo(niconico_id)
-    return VideoInfo(youtube_info.title, youtube_info.description, youtube_info.tags,
-                     niconico_info.description, niconico_info.tags, youtube_info.published_at)
+    return youtube_info, niconico_info
 
 
-def take_niconico_video_id(info):
+def _take_niconico_video_id(info):
     for text in [info.description, info.comment_of_poster]:
         matched = re.match(
             '.*' + re.escape(niconico_const.VIDEO_RESOURCE_PREFIX) + '([a-z0-9]+).*',
