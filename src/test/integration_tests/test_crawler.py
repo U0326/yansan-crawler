@@ -1,7 +1,7 @@
 import logging
 from unittest import TestCase
 from unittest import mock
-from src.main.crawler import crawler
+from src.main.crawler import video_info
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
 from src.main.video.db.video_repository import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
@@ -17,14 +17,14 @@ class TestCrawler(TestCase):
         logging.basicConfig(level=logging.DEBUG, format=log_format)
 
     @mock.patch('requests.get', side_effect=get_side_effect)
-    def test_crawl_01_new_id(self,  *args):
-        self.assertEqual(crawler.crawl(), None)
+    def test_crawl_01_new_id(self, _):
+        video_info.crawl_video_info()
         self._valid_db()
 
     @mock.patch('requests.get', side_effect=get_side_effect)
-    @mock.patch('src.main.crawler.crawler.videoinfo.take_video_info')
-    def test_crawl_02_existing_id(self, mock_take_video_info, *args):
-        crawler.crawl()
+    @mock.patch('src.main.crawler.video_info.videoinfo.take_video_info')
+    def test_crawl_02_existing_id(self, mock_take_video_info, _):
+        video_info.crawl_video_info()
         assert not mock_take_video_info.called
         self._valid_db()
 
@@ -33,7 +33,8 @@ class TestCrawler(TestCase):
         self._valid_tags()
         self._valid_processing()
 
-    def _valid_video_info(self):
+    @staticmethod
+    def _valid_video_info():
         documents = list(video_info_collection.find())
         assert len(documents) == 4
         for document in documents:
@@ -43,14 +44,16 @@ class TestCrawler(TestCase):
             assert document.get('published_at') == response_dict['items'][0]['snippet']['publishedAt']
             assert set(document.get('tags')) == set(id_tags_dict[document.get('id')])
 
-    def _valid_tags(self):
+    @staticmethod
+    def _valid_tags():
         documents = list(tags_collection.find())
         assert len(documents) == 16
         for document in documents:
             for id in document.get('video_id'):
                 assert document.get('tag') in id_tags_dict[id]
 
-    def _valid_processing(self):
+    @staticmethod
+    def _valid_processing():
         documents = list(processing_collection.find())
         assert len(documents) == 1
         assert documents[0]['next_page_token'] is None

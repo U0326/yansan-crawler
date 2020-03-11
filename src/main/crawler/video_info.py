@@ -9,7 +9,7 @@ from src.main.video.niconico.niconico_video_info import NicoNicoVideoInfo
 logger = logging.getLogger(__name__)
 
 
-def crawl():
+def crawl_video_info():
     while True:
         next_page_token = video_repository.get_next_page_token()
         next_page_token, ids = youtube.take_video_ids(next_page_token)
@@ -40,4 +40,4 @@ def _save_video_info(youtube_info: YoutubeVideoInfo, niconico_info: NicoNicoVide
 if __name__ == '__main__':
     log_format = '%(asctime)s %(levelname)s %(name)s :%(message)s'
     logging.basicConfig(level=logging.INFO, format=log_format)
-    crawl()
+    crawl_video_info()

@@ -22,7 +22,7 @@ pip install -r ./require.txt
 
 docker run --rm -p 27017:27017 --name test-mongo mongo
 // TODO 要動作確認
-python -m src.main.crawler.crawler -d
+python -m src.main.crawler.video_info -d
 ```
 
 ## プロジェクト概要
