@@ -21,7 +21,7 @@ def take_video_info(youtube_id):
     niconico_id = take_niconico_video_id(youtube_info)
     if not niconico_id:
         return
-    niconico_info = niconico.take_vide_info(niconico_id)
+    niconico_info = niconico.take_video_info(niconico_id)
     niconico_info = filter_niconico_info(niconico_info)
     return VideoInfo(youtube_info.title, youtube_info.description, youtube_info.tags,
                      niconico_info.description, niconico_info.tags, youtube_info.published_at)
