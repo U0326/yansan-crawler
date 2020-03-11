@@ -2,9 +2,9 @@ from collections import namedtuple
 import os
 import logging
 import re
-from video.youtube import accessor as youtube
-from video.niconico import accessor as niconico
-from video.niconico import const as niconico_const
+from src.main.video.youtube import accessor as youtube
+from src.main.video.niconico import accessor as niconico
+from src.main.video.niconico import const as niconico_const
 
 YouTubeVideoInfo = namedtuple('YouTubeVideoInfo', ('title', 'description', 'tags', 'comment_of_poster', 'published_at'))
 NiconicoVideoInfo = namedtuple('NiconicoVideoInfo', ('description', 'tags'))

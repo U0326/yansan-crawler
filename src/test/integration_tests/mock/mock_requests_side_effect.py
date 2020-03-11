@@ -1,4 +1,4 @@
-from video.youtube import const
+from src.main.video.youtube import const
 from src.test.integration_tests.mock.dummy_search_response import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.mock.dummy_comment_response import id_comment_response_dict

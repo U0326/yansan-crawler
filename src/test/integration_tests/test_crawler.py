@@ -3,7 +3,7 @@ from unittest import TestCase
 from unittest import mock
 from crawler import crawler
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
-from video.db.video_repository import *
+from src.main.video.db.video_repository import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.expected_id_tags import id_tags_dict
 import json

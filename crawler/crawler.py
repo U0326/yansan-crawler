@@ -1,8 +1,8 @@
 import logging
 
-from video import videoinfo
-from video.youtube import accessor as youtube
-from video.db import video_repository
+from src.main.video import videoinfo
+from src.main.video.youtube import accessor as youtube
+from src.main.video.db import video_repository
 
 logger = logging.getLogger(__name__)
 

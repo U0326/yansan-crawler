@@ -1,13 +1,13 @@
 import logging
 from lxml import etree
 import requests
-import video.niconico.config
+import src.main.video.niconico.config
 
 logger = logging.getLogger(__name__)
 
 
 def take_vide_info(video_id):
-    response = requests.get(video.niconico.config.END_POINT + '/' + video_id)
+    response = requests.get(src.main.video.niconico.config.END_POINT + '/' + video_id)
     xml_element = etree.XML(response.content)
     logger.debug(etree.tostring(xml_element, encoding="utf-8").decode())
     return xml_element

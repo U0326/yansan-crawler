@@ -1,7 +1,7 @@
 import logging
 import json
 import requests
-from video.youtube import const
+from src.main.video.youtube import const
 
 SEARCH_PATH = '/search'
 VIDEOS_PATH = '/videos'
