@@ -3,7 +3,7 @@ from unittest import TestCase
 from unittest import mock
 from src.main.crawler import video_info
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
-from src.main.video.db.video_repository import *
+from src.main.db.video_repository import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.expected_id_tags import id_tags_dict
 import json
@@ -49,8 +49,8 @@ class TestCrawler(TestCase):
         documents = list(tags_collection.find())
         assert len(documents) == 16
         for document in documents:
-            for id in document.get('video_id'):
-                assert document.get('tag') in id_tags_dict[id]
+            for _id in document.get('video_id'):
+                assert document.get('tag') in id_tags_dict[_id]
 
     @staticmethod
     def _valid_processing():

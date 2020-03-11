@@ -2,7 +2,7 @@ import logging
 
 from src.main.video import videoinfo
 from src.main.video.youtube import accessor as youtube
-from src.main.video.db import video_repository
+from src.main.db import video_repository
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
 from src.main.video.niconico.niconico_video_info import NicoNicoVideoInfo
 
