@@ -22,11 +22,13 @@ pip install -r ./require.txt
 
 docker run --rm -p 27017:27017 --name test-mongo mongo
 // TODO 要動作確認
-python -m crawler.crawler -d
+python -m src.main.crawler.video_info -d
 ```
 
 ## プロジェクト概要
-### クローラ覧
+### クローラ一覧
+※ クローラは、`src.main.crawler`配下に配置しています。
+
 |ファイル名|説明|実行タイミング|
 |---|---|---|
-|crawler.py|動画情報の取得を行います。|毎日2:00|
+|video_info.py|動画情報の取得を行います。|毎日2:00|

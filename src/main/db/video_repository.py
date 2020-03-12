@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import config
+from src.main import config
 
 client = MongoClient(config.DB_HOST, config.MONGO_PORT)
 db = client.yansan_db

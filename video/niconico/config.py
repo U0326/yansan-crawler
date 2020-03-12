@@ -1,1 +1,0 @@
-END_POINT = 'http://ext.nicovideo.jp/api/getthumbinfo'

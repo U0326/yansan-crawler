@@ -1,2 +1,7 @@
+integration_tests/
+venv/
+.idea
+.git/
 .gitignore
 Dockerfile
+.dockerignore
