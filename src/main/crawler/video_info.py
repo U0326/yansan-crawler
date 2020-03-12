@@ -1,6 +1,6 @@
 import logging
 
-from src.main.video.common import video_info_accessor
+from src.main.video.common.accessor import video_info_accessor
 from src.main.video.youtube import accessor as youtube
 from src.main.db import video_repository
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
