@@ -6,6 +6,7 @@ from typing import Tuple
 from src.main.video.niconico import const as niconico_const
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
 from src.main.video.niconico.niconico_video_info import NicoNicoVideoInfo
+from src.main.video.common.exception.exceptions import VideoAccessError
 
 logger = logging.getLogger(__name__)
 
@@ -13,10 +14,10 @@ logger = logging.getLogger(__name__)
 def take_video_info(youtube_id) -> Tuple[YoutubeVideoInfo, NicoNicoVideoInfo]:
     youtube_info = YoutubeVideoInfo(youtube_id)
     if not youtube_info:
-        return
+        raise VideoAccessError('Failed to take video info from YouTube.')
     niconico_id = _take_niconico_video_id(youtube_info)
     if not niconico_id:
-        return
+        raise VideoAccessError('Failed to take Niconico video id from YouTube video info.')
     niconico_info = NicoNicoVideoInfo(niconico_id)
     return youtube_info, niconico_info
 

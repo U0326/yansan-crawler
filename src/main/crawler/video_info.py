@@ -5,6 +5,7 @@ from src.main.video.youtube import accessor as youtube
 from src.main.db import video_repository
 from src.main.video.youtube.youtube_video_info import YoutubeVideoInfo
 from src.main.video.niconico.niconico_video_info import NicoNicoVideoInfo
+from src.main.video.common.exception.exceptions import VideoAccessError
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +17,11 @@ def crawl_video_info():
         for _id in ids:
             if video_repository.exists_video_id(_id):
                 continue
-            youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
+            try:
+                youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
+            except VideoAccessError:
+                logger.error('An error occurred while getting video information.', exc_info=True)
+                continue
             _save_video_info(youtube_info, niconico_info)
         video_repository.save_next_page_token(next_page_token)
         if not next_page_token:
