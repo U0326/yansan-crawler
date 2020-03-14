@@ -56,7 +56,7 @@ def take_comment_of_poster(video_id):
     response = requests.get(const.END_POINT + COMMENT_PATH, query)
     response_dict = json.loads(response.content)
     logger.debug(json.dumps(response_dict, indent=4, ensure_ascii=False))
-    if 'items' not in response_dict or len(response_dict['items']) is 0:
+    if 'items' not in response_dict or len(response_dict['items']) == 0:
         return None
 
     first_comment = response_dict['items'][0]['snippet']['topLevelComment']['snippet']
