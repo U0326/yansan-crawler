@@ -20,7 +20,8 @@ def crawl_video_info():
             try:
                 youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
             except VideoAccessError:
-                logger.error('An error occurred while getting video information.', exc_info=True)
+                logger.error(
+                    'An error occurred while getting video information. YouTube video_id: %s', _id, exc_info=True)
                 continue
             _save_video_info(youtube_info, niconico_info)
         video_repository.save_next_page_token(next_page_token)

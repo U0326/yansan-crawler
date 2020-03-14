@@ -23,12 +23,13 @@ def take_video_info(youtube_id) -> Tuple[YoutubeVideoInfo, NicoNicoVideoInfo]:
 
 
 def _take_niconico_video_id(info):
-    for text in [info.description, info.comment_of_poster]:
+    for data in [info.description, info.comment_of_poster]:
+        if type(data) is not str:
+            continue
         matched = re.match(
             '.*' + re.escape(niconico_const.VIDEO_RESOURCE_PREFIX) + '([a-z0-9]+).*',
-            text.replace(os.linesep, ' '))
+            data.replace(os.linesep, ' '))
         if matched:
             niconico_id = matched.group(1)
             logger.debug('niconico id: ' + niconico_id)
             return niconico_id
-    logger.warning('Niconico video ID not exists. title: ' + info.title)
