@@ -44,6 +44,4 @@ def _save_video_info(youtube_info: YoutubeVideoInfo, niconico_info: NicoNicoVide
 
 
 if __name__ == '__main__':
-    log_format = '%(asctime)s %(levelname)s %(name)s :%(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_format)
     crawl()
