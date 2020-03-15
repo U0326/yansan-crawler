@@ -3,7 +3,9 @@ from unittest import TestCase
 from unittest import mock
 from src.main.bootstrap import video_info_crawler
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
-from src.main.db.video_repository import *
+from src.main.db.video_repository import _video_info_collection
+from src.main.db.video_repository import _tags_collection
+from src.main.db.video_repository import _processing_collection
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.expected_id_tags import id_tags_dict
 import json
@@ -35,7 +37,7 @@ class TestCrawler(TestCase):
 
     @staticmethod
     def _valid_video_info():
-        documents = list(video_info_collection.find())
+        documents = list(_video_info_collection.find())
         assert len(documents) == 4
         for document in documents:
             response_dict = json.loads(id_video_response_dict[document.get('id')])
@@ -46,7 +48,7 @@ class TestCrawler(TestCase):
 
     @staticmethod
     def _valid_tags():
-        documents = list(tags_collection.find())
+        documents = list(_tags_collection.find())
         assert len(documents) == 16
         for document in documents:
             for _id in document.get('video_id'):
@@ -54,6 +56,6 @@ class TestCrawler(TestCase):
 
     @staticmethod
     def _valid_processing():
-        documents = list(processing_collection.find())
+        documents = list(_processing_collection.find())
         assert len(documents) == 1
         assert documents[0]['next_page_token'] is None

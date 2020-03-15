@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 def crawl():
     while True:
-        next_page_token = video_repository.get_next_page_token()
+        next_page_token = video_repository.take_next_page_token()
         next_page_token, ids = youtube.take_video_ids(next_page_token)
         for _id in ids:
             if video_repository.exists_video_id(_id):
@@ -40,7 +40,7 @@ def _save_video_info(youtube_info: YoutubeVideoInfo, niconico_info: NicoNicoVide
         }
     )
     for tag in tags:
-        video_repository.push_id_per_tag(tag, youtube_info.video_id)
+        video_repository.save_tag_and_video_id(tag, youtube_info.video_id)
 
 
 if __name__ == '__main__':
