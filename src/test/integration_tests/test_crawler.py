@@ -1,7 +1,7 @@
 import logging
 from unittest import TestCase
 from unittest import mock
-from src.main.crawler import video_info
+from src.main.bootstrap import video_info_crawler
 from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
 from src.main.db.video_repository import *
 from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
@@ -18,13 +18,13 @@ class TestCrawler(TestCase):
 
     @mock.patch('requests.get', side_effect=get_side_effect)
     def test_crawl_01_new_id(self, _):
-        video_info.crawl_video_info()
+        video_info_crawler.crawl()
         self._valid_db()
 
     @mock.patch('requests.get', side_effect=get_side_effect)
-    @mock.patch('src.main.crawler.video_info.video_info_accessor.take_video_info')
+    @mock.patch('src.main.bootstrap.video_info_crawler.video_info_accessor.take_video_info')
     def test_crawl_02_existing_id(self, mock_take_video_info, _):
-        video_info.crawl_video_info()
+        video_info_crawler.crawl()
         assert not mock_take_video_info.called
         self._valid_db()
 
