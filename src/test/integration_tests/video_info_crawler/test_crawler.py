@@ -2,11 +2,11 @@ import logging
 from unittest import TestCase
 from unittest import mock
 from src.main.bootstrap import video_info_crawler
-from src.test.integration_tests.mock.mock_requests_side_effect import get_side_effect
+from src.test.integration_tests.video_info_crawler.mock.mock_requests_side_effect import get_side_effect
 from src.main.db.video_repository import _video_info_collection
 from src.main.db.video_repository import _tags_collection
-from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
-from src.test.integration_tests.expected_id_tags import id_tags_dict
+from src.test.integration_tests.video_info_crawler.mock.dummy_video_response import id_video_response_dict
+from src.test.integration_tests.video_info_crawler.expected_id_tags import id_tags_dict
 import json
 
 
@@ -30,11 +30,11 @@ class TestCrawler(TestCase):
         self._valid_db()
 
     def _valid_db(self):
-        self._valid_video_info()
-        self._valid_tags()
+        self.__valid_video_info()
+        self.__valid_tags()
 
     @staticmethod
-    def _valid_video_info():
+    def __valid_video_info():
         documents = list(_video_info_collection.find())
         assert len(documents) == 4
         for document in documents:
@@ -45,7 +45,7 @@ class TestCrawler(TestCase):
             assert set(document.get('tags')) == set(id_tags_dict[document.get('id')])
 
     @staticmethod
-    def _valid_tags():
+    def __valid_tags():
         documents = list(_tags_collection.find())
         assert len(documents) == 16
         for document in documents:
