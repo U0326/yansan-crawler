@@ -11,22 +11,17 @@ logger = logging.getLogger(__name__)
 
 
 def crawl():
-    while True:
-        next_page_token = video_repository.take_next_page_token()
-        next_page_token, ids = youtube.take_video_ids(next_page_token)
-        for _id in ids:
-            if video_repository.exists_video_id(_id):
-                continue
-            try:
-                youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
-            except VideoAccessError:
-                logger.error(
-                    'An error occurred while getting video information. YouTube video_id: %s', _id, exc_info=True)
-                continue
-            _save_video_info(youtube_info, niconico_info)
-        video_repository.save_next_page_token(next_page_token)
-        if not next_page_token:
-            break
+    ids = youtube.take_all_video_ids()
+    for _id in ids:
+        if video_repository.exists_video_id(_id):
+            continue
+        try:
+            youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
+        except VideoAccessError:
+            logger.error(
+                'An error occurred while getting video information. YouTube video_id: %s', _id, exc_info=True)
+            continue
+        _save_video_info(youtube_info, niconico_info)
 
 
 def _save_video_info(youtube_info: YoutubeVideoInfo, niconico_info: NicoNicoVideoInfo):

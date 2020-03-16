@@ -10,25 +10,30 @@ MAX_RESULTS = 50
 logger = logging.getLogger(__name__)
 
 
-def take_video_ids(next_page_token=None):
-    query = {
-        'part': 'id',
-        'type': 'video',
-        'pageToken': next_page_token,
-        'maxResults': MAX_RESULTS,
-        'channelId': const.YANSAN_CHANNEL_ID,
-        'videoDuration': 'long',
-        'order': 'date',
-        'key': const.API_KEY
-    }
-    response = requests.get(const.END_POINT + SEARCH_PATH, query)
-    response_dict = json.loads(response.content)
-    logger.debug(json.dumps(response_dict, indent=4, ensure_ascii=False))
+def take_all_video_ids():
+    next_page_token = None
+    ids = []
+    while True:
+        query = {
+            'part': 'id',
+            'type': 'video',
+            'pageToken': next_page_token,
+            'maxResults': MAX_RESULTS,
+            'channelId': const.YANSAN_CHANNEL_ID,
+            'videoDuration': 'long',
+            'order': 'date',
+            'key': const.API_KEY
+        }
+        response = requests.get(const.END_POINT + SEARCH_PATH, query)
+        response_dict = json.loads(response.content)
+        logger.debug(json.dumps(response_dict, indent=4, ensure_ascii=False))
 
-    next_page_token = response_dict['nextPageToken'] if 'nextPageToken' in response_dict else None
-    ids = [element['id']['videoId'] for element in response_dict['items']]
-    logger.info('search result nextPageToken: ' + str(next_page_token) + ', ' + 'youtube ids: ' + str(ids))
-    return next_page_token, ids
+        next_page_token = response_dict['nextPageToken'] if 'nextPageToken' in response_dict else None
+        ids.extend([element['id']['videoId'] for element in response_dict['items']])
+        logger.info('nextPageToken: %s, youtube ids: %s', str(next_page_token), str(ids))
+        if next_page_token is None:
+            break
+    return ids
 
 
 def take_video_info(video_id):
