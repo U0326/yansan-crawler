@@ -1,11 +1,10 @@
-import logging
 from unittest import TestCase
 from unittest import mock
 from src.main.bootstrap import video_info_crawler
-from src.test.integration_tests.video_info_crawler.mock.mock_requests_side_effect import get_side_effect
+from src.test.integration_tests.common.mock.mock_requests_side_effect import get_side_effect
 from src.main.db.video_repository import _video_info_collection
 from src.main.db.video_repository import _tags_collection
-from src.test.integration_tests.video_info_crawler.mock.dummy_video_response import id_video_response_dict
+from src.test.integration_tests.common.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.video_info_crawler.expected_id_tags import id_tags_dict
 import json
 
@@ -13,10 +12,6 @@ import json
 # 注) unittestが関数名の昇順に実行されることに依存したコードになっている。
 # 注) 実行前にmongodbを起動しておく必要がある。
 class TestCrawler(TestCase):
-    def setUp(self):
-        log_format = '%(asctime)s %(levelname)s %(name)s :%(message)s'
-        logging.basicConfig(level=logging.DEBUG, format=log_format)
-
     @mock.patch('requests.get', side_effect=get_side_effect)
     def test_crawl_01_new_id(self, _):
         video_info_crawler.crawl()
