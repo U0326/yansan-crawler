@@ -1,19 +1,19 @@
-from pymongo import MongoClient
-from src.main import config
+from typing import List
 
-_client = MongoClient(config.DB_HOST, config.MONGO_PORT)
-_db = _client.yansan_db
-_video_info_collection = _db.video_info
-_tags_collection = _db.tags
-
-
-def exists_video_id(video_id):
-    return _video_info_collection.count_documents({'id': video_id}) > 0
+from src.main.db.video_info_collection import *
+from src.main.db.video_info_collection import _save_video_info
+from src.main.db.tags_collection import *
+from src.main.db.tags_collection import _save_tag_and_video_id
 
 
-def save_video_info(video_info):
-    _video_info_collection.insert_one(video_info)
-
-
-def save_tag_and_video_id(tag, video_id):
-    _tags_collection.update({'tag': tag}, {'$push': {'video_id': video_id}}, True)
+def save(title: str, video_id: str, published_at: str, tags: List[str]):
+    _save_video_info(
+        {
+            'title': title,
+            'id': video_id,
+            'published_at': published_at,
+            'tags': tags
+        }
+    )
+    for tag in tags:
+        _save_tag_and_video_id(tag, video_id)

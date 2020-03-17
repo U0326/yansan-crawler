@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 def crawl():
     ids = youtube.take_all_video_ids()
     for _id in ids:
-        if video_repository.exists_video_id(_id):
+        if video_repository.exists(_id):
             continue
         try:
             youtube_info, niconico_info = video_info_accessor.take_video_info(_id)
@@ -26,16 +26,7 @@ def crawl():
 
 def _save_video_info(youtube_info: YoutubeVideoInfo, niconico_info: NicoNicoVideoInfo):
     tags = list(set(youtube_info.tags).union(niconico_info.tags))
-    video_repository.save_video_info(
-        {
-            'title': youtube_info.title,
-            'id': youtube_info.video_id,
-            'published_at': youtube_info.published_at,
-            'tags': tags
-        }
-    )
-    for tag in tags:
-        video_repository.save_tag_and_video_id(tag, youtube_info.video_id)
+    video_repository.save(youtube_info.title, youtube_info.video_id, youtube_info.published_at, tags)
 
 
 if __name__ == '__main__':

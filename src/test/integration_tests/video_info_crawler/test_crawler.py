@@ -2,8 +2,8 @@ from unittest import TestCase
 from unittest import mock
 from src.main.bootstrap import video_info_crawler
 from src.test.integration_tests.common.mock.mock_requests_side_effect import get_side_effect
-from src.main.db.video_repository import _video_info_collection
-from src.main.db.video_repository import _tags_collection
+from src.main.db.video_info_collection import _video_info_collection
+from src.main.db.tags_collection import _tags_collection
 from src.test.integration_tests.common.mock.dummy_video_response import id_video_response_dict
 from src.test.integration_tests.video_info_crawler.expected_id_tags import id_tags_dict
 import json
