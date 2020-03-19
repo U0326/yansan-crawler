@@ -1,32 +1,28 @@
-from pymongo import MongoClient
-from src.main import config
+from typing import List
 
-client = MongoClient(config.DB_HOST, config.MONGO_PORT)
-db = client.yansan_db
-video_info_collection = db.video_info
-tags_collection = db.tags
-processing_collection = db.processing
-
-
-def exists_video_id(video_id):
-    return video_info_collection.find({'id': video_id}).count() > 0
+from src.main.db.video_info_collection import *
+from src.main.db.video_info_collection import _save_video_info
+from src.main.db.video_info_collection import _delete_video_info
+from src.main.db.tags_collection import *
+from src.main.db.tags_collection import _save_tag_and_video_id
+from src.main.db.tags_collection import _delete_video_ids
+from src.main.db.tags_collection import _delete_tag_if_no_video_id
 
 
-def save_video_info(video_info):
-    video_info_collection.insert_one(video_info)
+def save(title: str, video_id: str, published_at: str, tags: List[str]):
+    _save_video_info(
+        {
+            'title': title,
+            'id': video_id,
+            'published_at': published_at,
+            'tags': tags
+        }
+    )
+    for tag in tags:
+        _save_tag_and_video_id(tag, video_id)
 
 
-def push_id_per_tag(tag, video_id):
-    tags_collection.update({'tag': tag}, {'$push': {'video_id': video_id}}, True)
-
-
-def save_next_page_token(next_page_token):
-    processing_collection.update({}, {'next_page_token': next_page_token}, True)
-
-
-def get_next_page_token():
-    result = processing_collection.find_one()
-    if result:
-        return result.get('next_page_token')
-    else:
-        return
+def delete(video_ids: List[str]):
+    _delete_video_info(video_ids)
+    _delete_video_ids(video_ids)
+    _delete_tag_if_no_video_id()

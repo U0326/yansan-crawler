@@ -1,7 +1,8 @@
 from src.main.video.youtube import const
-from src.test.integration_tests.mock.dummy_search_response import *
-from src.test.integration_tests.mock.dummy_video_response import id_video_response_dict
-from src.test.integration_tests.mock.dummy_comment_response import id_comment_response_dict
+from src.test.integration_tests.common.mock.dummy_search_response import search_response_01
+from src.test.integration_tests.common.mock.dummy_search_response import search_response_02
+from src.test.integration_tests.common.mock.dummy_video_response import id_video_response_dict
+from src.test.integration_tests.common.mock.dummy_comment_response import id_comment_response_dict
 from requests import get
 
 
