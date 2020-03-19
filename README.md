@@ -23,6 +23,7 @@ $ pip install -r ./require.txt
 $ docker run --rm -p 27017:27017 --name test-mongo mongo
 
 $ python -m src.main.bootstrap.video_info_crawler -d
+$ python -m src.main.bootstrap.video_info_cleaner -d
 ```
 
 ## プロジェクト説明
@@ -31,7 +32,8 @@ $ python -m src.main.bootstrap.video_info_crawler -d
 
 |エントリポイント|説明|実行タイミング|
 |---|---|---|
-|video_info_crawler.py|動画情報の取得を行います。|毎日2:00|
+|video_info_crawler.py|動画情報を取得し、DBへ格納します。|毎日 2:00|
+|video_info_cleaner.py|削除済の動画情報をDBから取り除きます。|毎週 月曜日 3:00|
 
 ### 内部で使用するAPI
 * [YouTube Data api](https://developers.google.com/youtube/v3/getting-started?hl=ja): YouTubeの動画情報を取得する為に使用しています。
